@@ -1,14 +1,23 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import { AtTabBar }  from 'taro-ui'
 import './index.scss'
 import Home from '../home/index'
+import Catory from '../catory/index'
+import Shop from '../shop/index'
+import User from '../user/index'
+let tabList = [
+  { title: '首页', iconType: 'home', text: ''},
+  { title: '分类', iconType: 'list'},
+  { title: '购物车', iconType: 'shopping-bag-2'},
+  { title: '我的', iconType: 'user'}
+]
 
 @inject('counterStore')
 @observer
-class Index extends Component<any, any> {
+class Index extends Component<Component, any> {
   constructor() {
     super(...arguments)
     this.state = {
@@ -26,36 +35,39 @@ class Index extends Component<any, any> {
 
   handleClick = (value: number) => {
     console.log(value);
+
     this.setState({
       current: value
     })
-    // 跳转到目的页面，在当前页面打开
-    // Taro.redirectTo({
-    //   url: '/pages/home/index'
-    // })
+  }
+  componentDidMount = () => {
+    Taro.setNavigationBarTitle({
+      title: tabList[this.state.current].title
+    })
+  }
+  componentDidUpdate = () => {
+    Taro.setNavigationBarTitle({
+      title: tabList[this.state.current].title
+    })
   }
   render () {
     return (
       <View className='index'>
-
-
+        {this.state.current === 0 && <Home/>}
+        {this.state.current === 1 && <Catory/>}
+        {this.state.current === 2 && <Shop/>}
+        {this.state.current === 3 && <User/>}
         <AtTabBar
-        fixed
+          fixed
           backgroundColor='#fff'
           color='#333'
           selectedColor='#9acd32'
           fontSize={12}
           iconSize={20}
-          tabList={[
-            { title: '首页', iconType: 'home', text: ''},
-            { title: '分类', iconType: 'list'},
-            { title: '购物车', iconType: 'shopping-bag-2'},
-            { title: '我的', iconType: 'user'}
-          ]}
+          tabList={tabList}
           onClick={this.handleClick}
           current={this.state.current}
         />
-
       </View>
     )
   }

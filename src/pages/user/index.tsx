@@ -4,19 +4,20 @@ import { View,Text } from '@tarojs/components'
 
 import './index.scss'
 
-
-class Home extends Component<Component,any> {
+class User extends Component<any,any> {
   constructor() {
     super(...arguments)
 
   }
+
   render() {
     return (
       <View>
-        <Text>ww</Text>
+        <Text>user</Text>
+
       </View>
     )
   }
 }
 
-export default Home as ComponentType
+export default User as ComponentType
