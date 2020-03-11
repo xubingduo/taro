@@ -1,19 +1,43 @@
 import { ComponentType } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View,Text } from '@tarojs/components'
-
+import Taro, { Component } from '@tarojs/taro'
+import { View,Swiper, SwiperItem } from '@tarojs/components'
 import './index.scss'
 
 
 class Home extends Component<Component,any> {
-  constructor() {
-    super(...arguments)
-
+  constructor(prop) {
+    super(prop)
+    this.state = {
+      bannerList: ['1','2','3']
+    }
   }
+
+  rendeItem() {
+    const {bannerList} = this.state;
+    const data = bannerList.map((num: string) => {
+      return (
+        <SwiperItem>
+          <View className="demo-text-1">
+            {num}
+          </View>
+        </SwiperItem>
+      )
+    })
+    return data;
+  }
+
   render() {
     return (
       <View>
-        <Text>ww</Text>
+        <Swiper
+            className='test-h'
+            indicatorColor='#999'
+            indicatorActiveColor='#333'
+            circular
+            indicatorDots
+            autoplay>
+            {this.rendeItem()}
+        </Swiper>
       </View>
     )
   }
