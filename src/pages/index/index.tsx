@@ -2,26 +2,19 @@ import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
+import { AtTabBar }  from 'taro-ui'
 import './index.scss'
-
-type PageStateProps = {
-  counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
-
-interface Index {
-  props: PageStateProps;
-}
+import Home from '../home/index'
 
 @inject('counterStore')
 @observer
-class Index extends Component {
-
+class Index extends Component<any, any> {
+  constructor() {
+    super(...arguments)
+    this.state = {
+      current: 0
+    }
+  }
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -29,47 +22,40 @@ class Index extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
-    navigationBarTitleText: '首页'
+
+
+  handleClick = (value: number) => {
+    console.log(value);
+    this.setState({
+      current: value
+    })
+    // 跳转到目的页面，在当前页面打开
+    // Taro.redirectTo({
+    //   url: '/pages/home/index'
+    // })
   }
-
-  componentWillMount () { }
-
-  componentWillReact () {
-    console.log('componentWillReact')
-  }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  increment = () => {
-    const { counterStore } = this.props
-    counterStore.increment()
-  }
-
-  decrement = () => {
-    const { counterStore } = this.props
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props
-    counterStore.incrementAsync()
-  }
-
   render () {
-    const { counterStore: { counter } } = this.props
     return (
       <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+
+
+        <AtTabBar
+        fixed
+          backgroundColor='#fff'
+          color='#333'
+          selectedColor='#9acd32'
+          fontSize={12}
+          iconSize={20}
+          tabList={[
+            { title: '首页', iconType: 'home', text: ''},
+            { title: '分类', iconType: 'list'},
+            { title: '购物车', iconType: 'shopping-bag-2'},
+            { title: '我的', iconType: 'user'}
+          ]}
+          onClick={this.handleClick}
+          current={this.state.current}
+        />
+
       </View>
     )
   }
