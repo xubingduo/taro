@@ -1,3 +1,7 @@
-.demo-text-1 {
-  background-color:salmon;
+@import "~taro-ui/dist/style/components/grid.scss";
+
+.at-grid-style{
+  font-size: 20px !important;
+  background-color: #f00;
+  color: green;
 }
