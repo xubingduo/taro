@@ -1,7 +1,155 @@
-@import "~taro-ui/dist/style/components/grid.scss";
-
-.at-grid-style{
-  font-size: 20px !important;
-  background-color: #f00;
-  color: green;
+:root{
+  --base_color:rgba(62, 185, 101, 1);
+  --bg_color:#f4f4f4;
 }
+
+
+.backview {
+  --bg_color:#f4f4f4;
+  background: var(--bg_color);
+  padding-bottom: 180px;
+}
+.add_time_view {
+  display: flex;
+  height: 50px;
+  padding: 10px;
+  align-items: center;
+  background: #fff;
+  margin-top: 20px;
+  .time_line {
+    width: 8px;
+    height: 32px;
+    line-height: 32px;
+    background: rgba(62, 185, 101, 1);
+    margin-left: 20px;
+  }
+  .time_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .time_content1 {
+      line-height: 40px;
+        height: 40px;
+      .time_title {
+        margin-left: 20px;
+        line-height: 40px;
+        height: 40px;
+        color: #333;
+        font-size: 32px;
+      }
+
+    }
+    .time_more {
+      --base_color: rgba(62, 185, 101, 1);
+      font-size: 28px;
+      color: var(--base_color);
+      padding-right: 20px;
+    }
+
+  }
+
+}
+
+::-webkit-scrollbar{
+  display:none;
+}
+.discountview {
+  display: flex;
+  height: 360px;
+  background: #fff;
+  white-space:nowrap ;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  .itemview {
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+    width: 280px;
+    padding: 20px;
+    .itemview_img {
+      width: 100%;
+      height: 200px;
+    }
+    .item_title {
+      font-size: 28px;
+      color: #333;
+    }
+    .item_bottom_content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      align-items: center;
+      .bottom_titles {
+        display: flex;
+        flex-direction: column;
+        .item_vip_prive {
+          color: red;
+          font-size: 28px;
+        }
+        .item_prive {
+          color: #666;
+          font-size: 20px;
+          text-decoration:line-through;
+        }
+      }
+    }
+  }
+
+}
+
+.like {
+  background: #fff;
+  padding: 0 10px;
+  .likess {
+    display: flex;
+    flex-wrap: wrap;
+    // background: #fff;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .like_content {
+      border-radius: 20px;
+      box-shadow: 2px 2px 10px 2px #eee, 2px 2px 2px 2px #eee;
+      width: 49%;
+      margin-bottom: 20px;
+      .like_img {
+        width: 100%;
+        height: 360px;
+      }
+      .like_title {
+        color: #333;
+        font-size: 32px;
+        padding: 10px 20px;
+      }
+      .like_bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        .bottom_titles {
+          .vip_price_title {
+            color: red;
+            font-size: 28px;
+          }
+          .price_title {
+            color: #666;
+            font-size: 20px;
+            text-decoration:line-through;
+            margin-left: 10px;
+          }
+        }
+
+      }
+    }
+
+  }
+  .like_footer {
+    text-align: center;
+    padding: 40px;
+    .footer_name {
+      color: #f3f3f3;
+      font-family: "微软雅黑";
+    }
+  }
+}
+

@@ -1,0 +1,35 @@
+.at-search-bar {
+  &::after{
+    border: 0 solid #fff;
+  }
+  .at-search-bar__input-cnt {
+    height: 60px;
+  }
+}
+
+.attabs_costom .at-tabs__item{
+  padding: 32px 24px;
+
+}
+.at-tabs__item-underline {
+  background-color: rgba(62, 185, 101, 1);
+}
+.at-tabs__item--active {
+  color: rgba(62, 185, 101, 1);
+}
+
+.at-tabs--vertical .at-tabs__item-underline {
+  display: block;
+  top: 5px;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 8px;
+  height: 90%;
+  -webkit-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+
+

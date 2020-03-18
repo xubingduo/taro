@@ -8,6 +8,7 @@ import Home from '../home/index'
 import Catory from '../catory/index'
 import Shop from '../shop/index'
 import User from '../user/index'
+// import '../home/index.scss'
 let tabList = [
   { title: '首页', iconType: 'home', text: ''},
   { title: '分类', iconType: 'list'},
@@ -71,6 +72,10 @@ class Index extends Component<Component, any> {
       </View>
     )
   }
+
+
 }
+
+
 
 export default Index  as ComponentType
